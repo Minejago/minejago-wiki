@@ -1,6 +1,6 @@
 import { loadedAddonStore, selectedAddonStore } from '$lib/stores/addonStore';
 import { get } from 'svelte/store';
-import { advancementStore, patchouliStore, recipesStore, texturesStore } from '$lib/stores/fileStore';
+import { patchouliStore, recipesStore, texturesStore } from '$lib/stores/fileStore';
 import { getAddonURL } from '$lib/utils/apiUtils';
 import { modInformations } from '$lib/utils/modInformations';
 import { prepareZip } from '$lib/setup/prepareZip';
@@ -8,21 +8,6 @@ import { getMatchingJSONFiles, getTextureFiles } from '$lib/setup/loadFiles';
 import { preparePatchouli } from '$lib/setup/preparePatchouli';
 import { languagesStore } from '$lib/stores/languageStore';
 import { updateSearch } from '$lib/setup/initializeSearch';
-
-const fixApparatusRecipesIfNecessary = (recipe: any) => {
-	if (recipe.type === 'ars_nouveau:enchanting_apparatus' && recipe.item_1) {
-		recipe.pedestalItems = [];
-		for (let i = 1; i < 9; i++) {
-			if (recipe[`item_${i}`]) {
-				// Gods damn it, Bailey.
-				recipe.pedestalItems.push(recipe[`item_${i}`][0]);
-			}
-		}
-		return recipe;
-	} else {
-		return recipe;
-	}
-};
 
 const isObject = (item: any) => {
 	return item && typeof item === 'object' && !Array.isArray(item);
@@ -64,8 +49,7 @@ const loadAndStoreAddonData = (addonToBeLoaded: string) => {
 					getMatchingJSONFiles(
 						addonInformation.recipePredicate,
 						zip,
-						'',
-						fixApparatusRecipesIfNecessary
+						''
 					),
 					addonInformation.advancementPredicate ? getMatchingJSONFiles(addonInformation.advancementPredicate, zip, addonToBeLoaded) : Promise.resolve()
 				]).then(
@@ -89,7 +73,6 @@ const loadAndStoreAddonData = (addonToBeLoaded: string) => {
 							mergeDeep(get(languagesStore), loadedLanguages) as App.LanguageDictionary
 						);
 						recipesStore.set({ ...get(recipesStore), ...loadedRecipes });
-						advancementStore.set({...get(advancementStore), ...loadedAdvancements})
 						updateSearch();
 						loadedAddonStore.set([...get(loadedAddonStore), addonToBeLoaded]);
 					}

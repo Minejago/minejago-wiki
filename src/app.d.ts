@@ -6,6 +6,7 @@ declare namespace App {
 	interface PageData {
 		category?: string;
 		entry?: string;
+		condition: string;
 	}
 
 	// interface Platform {}
@@ -26,7 +27,7 @@ declare namespace App {
 	}
 
 	interface PatchouliPage {
-		type: 'patchouli_books:text' | 'patchouli_books:crafting' | 'patchouli_books:image' | string;
+		type: 'modonomicon:text' | 'modonomicon:crafting' | 'modonomicon:image' | string;
 		recipe?: string;
 		text?: string;
 		entries?: Array<string>; // Links in the Relations Page
@@ -37,13 +38,11 @@ declare namespace App {
 	interface PatchouliCategory {
 		name: string;
 		id: string;
-		description: string;
 		icon: string;
 		sortnum: number;
 		entries: {
 			[x: string]: PatchouliEntry;
 		};
-		source: string;
 	}
 
 	interface PatchouliEntry {
@@ -58,21 +57,21 @@ declare namespace App {
 		item: string;
 	}
 
+	interface Potion {
+		potion: string;
+	}
+
 	interface Tag {
 		tag: string;
 	}
 
-	type Ingredient = Tag & Item & {};
+	type Ingredient = Tag & Item & NonNullable<unknown>;
 
 	interface Recipe {
 		type:
 		| 'minecraft:crafting_shaped'
 		| 'minecraft:crafting_shapeless'
-		| 'ars_nouveau:enchanting_apparatus'
-		| 'ars_nouveau:imbuement'
-		| 'ars_nouveau:enchantment'
-		| 'ars_nouveau:glyph'
-		| 'ars_nouveau:armor_upgrade'
+		| 'minejago:teapot_brewing'
 		| 'Unknown Recipe';
 	}
 
@@ -86,70 +85,17 @@ declare namespace App {
 	}
 
 	interface ShapelessRecipe extends Recipe {
-		type: 'minecraft:crafting_shapeless' | 'ars_nouveau:book_upgrade';
+		type: 'minecraft:crafting_shapeless';
 		ingredients: Array<Ingredient>;
 		result: Item;
 	}
 
-	interface EnchantingApparatusRecipe extends Recipe {
-		type: 'ars_nouveau:enchanting_apparatus';
-		keepNbtOfReagent: boolean;
-		reagent: Array<Ingredient>;
-		output: Item;
-		pedestalItems: Array<Ingredient>;
-		sourceCost: number;
-	}
-
-	interface EnchantmentRecipe extends Recipe {
-		type: 'ars_nouveau:enchantment';
-		enchantment: string;
-		level: number;
-		pedestalItems: Array<Ingredient>;
-		sourceCost: number;
-	}
-
-	interface SpellWrite extends Recipe {
-		type: 'ars_nouveau:enchantment';
-		pedestalItems: Array<Ingredient>;
-		sourceCost: number;
-	}
-
-	interface GlyphRecipe extends Recipe {
-		type: 'ars_nouveau:glyph';
-		count: number;
-		exp: number;
-		inputItems: Array<Ingredient>;
-		output: Item;
-	}
-
-	interface ImbuementRecipe extends Recipe {
-		type: 'ars_nouveau:imbuement';
-		count: number;
-		input: {
-			item: Ingredient;
-		};
-		output: Item;
-		pedestalItems: Array<Ingredient>;
-		source: number;
-	}
-
-	interface ArmorUpgradeRecipe extends Recipe {
-		type: 'ars_nouveau:armor_upgrade';
-		tier: number;
-		pedestalItems: Array<Ingredient>;
-		sourceCost: number;
-	}
-
-	interface Advancement {
-		parent: string;
-		display: {
-			description: {
-				translate: string;
-			},
-			title: {
-				translate: string;
-			}
-		}
+	interface TeapotBrewingRecipe extends Recipe {
+		type: 'minejago:teapot_brewing';
+		ingredient: Ingredient;
+		result: Potion;
+		experience: number;
+		cookingTime: number;
 	}
 
 	interface PatchouliStore {
@@ -166,10 +112,6 @@ declare namespace App {
 
 	export interface MinecraftLanguageDictionary {
 		[x: string]: string;
-	}
-
-	interface AdvancementStore {
-		[x: string]: Advancement;
 	}
 
 	export interface SearchCandidate {

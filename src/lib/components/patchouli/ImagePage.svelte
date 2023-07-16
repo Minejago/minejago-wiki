@@ -8,7 +8,7 @@
     export let title: string;
     export let images: Array<string>;
 
-    $: mappedImages = images ? images.map(image => getTexture(`ars_nouveau:${getFileName(image)}`, $texturesStore)) : []
+    $: mappedImages = images ? images.map(image => getTexture(`minejago:${getFileName(image)}`, $texturesStore)) : []
 </script>
 
 {#if title}

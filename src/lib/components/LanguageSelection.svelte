@@ -12,10 +12,12 @@
 
 <select class="select" bind:value={chosenLanguage} id="language" name="language" on:change={onChange}>
     <option value="en_us">English</option>
-    <option value="es_es">Spanish</option>
-    <option value="ja_jp">Japanese</option>
-    <option value="ko_kr">Korean</option>
-    <option value="ru_ru">Russian</option>
-    <option value="zh_cn">Chinese - Simplified</option>
-    <option value="zh_tw">Chinese - Traditional</option>
+    <option value="de_de">German</option>
+    <option value="en_gb">English, United Kingdom</option>
+    <option value="en_pt">Pirate English</option>
+    <option value="en_ud">English (Upside Down)</option>
+    <option value="enws">Shakespearean English</option>
+    <option value="fi_fi">Finnish</option>
+    <option value="lol_us">LOLCAT</option>
+    <option value="pl_pl">Polish</option>
 </select>

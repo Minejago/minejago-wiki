@@ -2,65 +2,31 @@
 </script>
 
 <div class="flex flex-col justify-center items-start h-full m-2 space-y-2">
-    <p>Welcome to the automatically generated Wiki of Ars Nouveau!</p>
-    <p>This Wiki is automatically generated from the Patchouli Files in the Ars Nouveau Repository.
-        Therefore, there's some things that just can't be displayed, like the GeckoLib-Rendered Spellbook, Blocks,
-        Keybinds and other things.
+    <p>Welcome to the automatically generated Wiki of Minejago!</p>
+    <p></p>
+    <p>This Wiki is automatically generated from the Patchouli Files in the Minejago Repository.
         It can also be a bit janky, with missing names or unexpected errors.</p>
-    <p>If you encounter any issues, please reach out in the Ars Nouveau Discord found <a
-            href="/category/mod_news/entry/mod_news" rel="noopener noreferrer">here</a> or submit an issue
-            <a href="https://github.com/Sarenor/arsnouveau-wiki/issues/new" rel="noopener noreferrer">here</a>!</p>
-    <p>You can now select which Addon Mods you want to include in the wiki! Currently available:</p>
-    <ul class="list-disc pl-8">
-        <li>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/ars-elemental" rel="noopener noreferrer"
-               target="_blank">
-                Ars Elemental
-            </a>
-        </li>
-        <li>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/ars-nouveau-gears" rel="noopener noreferrer" target="_blank">
-                Ars G.E.A.R.S
-            </a>
-        </li>
-        <li>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/ars-instrumentum" rel="noopener noreferrer"
-               target="_blank">
-                Ars Instrumentum
-            </a>
-        </li>
-        <li>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/ars-mage-fight" rel="noopener noreferrer"
-               target="_blank">
-                Ars Mage Fight
-            </a>
-        </li>
-        <li>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/ars-omega" rel="noopener noreferrer" target="_blank">
-                Ars Omega
-            </a>
-        </li>
-        <li>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/ars-scalaes" rel="noopener noreferrer"
-               target="_blank">
-                Ars Scalaes
-            </a>
-        </li>
-        <li>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/starbunclemania" rel="noopener noreferrer"
-               target="_blank">
-                Starbuncle Mania
-            </a>
-        </li>
-        <li>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/too-many-glyphs" rel="noopener noreferrer"
-               target="_blank">
-                Too Many Glyphs (Beta, repository doesn't have all the necessary information)
-            </a>
-        </li>
-    </ul>
-    <p>Not all Addons are available for the current version and addon documentation functionality is less tested than
-        Ars Nouveau Wiki functionality. Use at your own risk.</p>
-    <p>Direct links to addon pages or refreshing addon pages is currently not supported, since the server doesn't know
-        which addons to load.</p>
+    <p>If you encounter any issues, please <!--reach out in the Minejago Discord found <a
+            href="/category/mod_news/entry/mod_news" rel="noopener noreferrer">here</a> or--> submit an issue
+            <a href="https://github.com/thomasglasser/minejago-wiki/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=" rel="noopener noreferrer">here</a>!</p>
+    <p></p>
+    <p></p>
+<!--    <p>You can now select which Addon Mods you want to include in the wiki! Currently available:</p>-->
+<!--    <ul class="list-disc pl-8">-->
+<!--        <li>-->
+<!--            <a href="https://www.curseforge.com/minecraft/mc-mods/ars-elemental" rel="noopener noreferrer"-->
+<!--               target="_blank">-->
+<!--                Ars Elemental-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="https://www.curseforge.com/minecraft/mc-mods/ars-nouveau-gears" rel="noopener noreferrer" target="_blank">-->
+<!--                Ars G.E.A.R.S-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <p>Not all Addons are available for the current version and addon documentation functionality is less tested than-->
+<!--        Minejago Wiki functionality. Use at your own risk.</p>-->
+<!--    <p>Direct links to addon pages or refreshing addon pages is currently not supported, since the server doesn't know-->
+<!--        which addons to load.</p>-->
 </div>

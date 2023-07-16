@@ -24,8 +24,8 @@
     <a
             class="text-sm sm:text-lg md:text-3xl font-bold uppercase mr-4"
             href="/"
-            id="ars_nouveau_wiki"
-            title="Return to main page">Ars Nouveau Wiki</a
+            id="minejago_wiki"
+            title="Return to main page">Minejago Wiki</a
     >
     <svelte:fragment slot="trail">
         <div class="hidden lg:block">

@@ -17,8 +17,6 @@ export const resolveTag = (tag: string): string | undefined => {
 				}
 			case 'gems':
 				switch (tagParts[1]) {
-					case 'source':
-						return 'ars_nouveau:source_gem';
 					case 'diamond':
 						return 'minecraft:diamond';
 					case 'quartz':
@@ -32,8 +30,6 @@ export const resolveTag = (tag: string): string | undefined => {
 				}
 			case 'storage_blocks':
 				switch (tagParts[1]) {
-					case 'source':
-						return 'block.ars_nouveau.source_gem_block';
 					case 'diamond':
 						return 'block.minecraft.diamond_block';
 					case 'gold':
@@ -80,11 +76,9 @@ export const resolveTag = (tag: string): string | undefined => {
 			case 'chests':
 				return 'Any chest';
 			case 'summon_bed':
-				return 'Any Starby bed';
+				return 'Any bed';
 			case 'seeds':
 				return 'minecraft:wheat_seeds';
-			case 'wilden_drop':
-				return 'Any wilden Drop';
 			case 'saplings':
 				return 'Any sapling';
 			case 'dirt':
@@ -143,31 +137,17 @@ export const resolveTag = (tag: string): string | undefined => {
 					case 'glowstone':
 						return 'minecraft:glowstone_dust';
 					default:
-						return 'unkown dust';
+						return 'unknown dust';
 				}
 			}
 			case 'logs': {
-				switch (tagParts[1]) {
-					case 'archwood':
-						return 'Any Archwood log';
-					default:
-						return 'Any log';
-				}
+				return 'Any log';
 			}
 			case 'wooden_pressure_plates': {
 				return 'Any wooden pressure plate';
 			}
 			case 'obsidian': {
 				return 'Any Obsidian';
-			}
-			case 'tier_4_ingredient': {
-				return 'Any Ars Omega T4 ingredient';
-			}
-			case 'tier_4_essence': {
-				return 'Any Ars Omega T4 essence';
-			}
-			case 'tier_4_catalyst': {
-				return 'Any Ars Omega T4 catalyst';
 			}
 		}
 	}

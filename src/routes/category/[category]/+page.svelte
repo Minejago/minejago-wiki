@@ -1,9 +1,11 @@
 <script lang="ts">
-    import {patchouliStore} from '$lib/stores/fileStore';
+    import {patchouliStore, texturesStore} from '$lib/stores/fileStore';
     import Label from "$lib/components/Label.svelte";
     import {labelStore} from "$lib/stores/languageStore";
-    import {currentExpandedCategory, currentPageSource} from "$lib/stores/uiState";
+    import {currentExpandedCategory, currentPageSource, storeCurrentUrl} from "$lib/stores/uiState";
     import AddonInformation from "$lib/components/AddonInformation.svelte";
+    import {getItemSrc} from "$lib/textures.js";
+    import {Accordion, AccordionItem} from "@skeletonlabs/skeleton";
 
     /** @type {import('./$types').PageData} */
     export let data: App.PageData;
@@ -20,6 +22,3 @@
     <Label label={displayedCategory.name}/>
     <AddonInformation addonName={displayedCategory.source} position="bottom"/>
 </h2>
-<div class="flex flex-col justify-start items-center h-full m-4">
-    <p><Label label={displayedCategory.description}/></p>
-</div>

@@ -1,15 +1,14 @@
 <svg
-	class={$$props.class}
-	height="103.609px"
-	id="Layer_1"
-	style={$$props.style}
-	viewBox="0 0 122.879 103.609"
-	width="122.879px"
-	x="0px"
-	xml:space="preserve"
-	xmlns="http://www.w3.org/2000/svg"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
-	y="0px"
+		class={$$props.class}
+		height="103.609px"
+		id="Layer_1"
+		style={$$props.style}
+		viewBox="0 0 122.879 103.609"
+		width="122.879px"
+		x="0px"
+		xml:space="preserve"
+		xmlns="http://www.w3.org/2000/svg"
+		y="0px"
 >
 	<g>
 		<path

@@ -18,15 +18,15 @@ const initalizeMinecraftLanguageStore = (
 const initalizeDynamicallyLoadedStores = (
 	fetch: (info: RequestInfo, init?: RequestInit) => Promise<Response>
 ) => {
-	return fetch('/ars_nouveau.zip')
+	return fetch('/minejago.zip')
 		.then(prepareZip)
 		.then(async function (zip) {
 			return Promise.all([
-				getTextureFiles(modInformations.ars_nouveau.texturePredicate, zip, 'ars_nouveau'),
-				getMatchingJSONFiles(modInformations.ars_nouveau.patchouliCategoryPredicate, zip),
-				getMatchingJSONFiles(modInformations.ars_nouveau.patchouliEntryPredicate, zip),
-				getMatchingJSONFiles(modInformations.ars_nouveau.languagePredicate, zip),
-				getMatchingJSONFiles(modInformations.ars_nouveau.recipePredicate, zip)
+				getTextureFiles(modInformations.minejago.texturePredicate, zip, 'minejago'),
+				getMatchingJSONFiles(modInformations.minejago.patchouliCategoryPredicate, zip),
+				getMatchingJSONFiles(modInformations.minejago.patchouliEntryPredicate, zip),
+				getMatchingJSONFiles(modInformations.minejago.languagePredicate, zip),
+				getMatchingJSONFiles(modInformations.minejago.recipePredicate, zip)
 			]).then(
 				([
 					loadedTextures,
@@ -37,7 +37,7 @@ const initalizeDynamicallyLoadedStores = (
 				]) => {
 					texturesStore.set(loadedTextures);
 					patchouliStore.set(
-						preparePatchouli(loadedPatchouliCategories, loadedPatchouliEntries, 'ars_nouveau')
+						preparePatchouli(loadedPatchouliCategories, loadedPatchouliEntries, 'minejago')
 					);
 					languagesStore.set(loadedLanguages);
 					recipesStore.set(loadedRecipes);

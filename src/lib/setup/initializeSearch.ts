@@ -7,7 +7,7 @@ import { get } from 'svelte/store';
 const getEntryText = (entry: App.PatchouliEntry) => {
 	let text = '';
 	entry.pages.forEach((page: App.PatchouliPage) => {
-		if (page.type === 'patchouli_books:text' && page.text) {
+		if (page.type === 'modonomicon:text' && page.text) {
 			text += getLabelWithCurrentValues(page.text);
 		}
 	});
@@ -35,7 +35,7 @@ export const initializeSearch = (
 		Object.entries(categories).forEach(([key, category]) => {
 			searchCandidates.push({
 				title: getLabelWithCurrentValues(category.name) || '',
-				text: getLabelWithCurrentValues(category.description) || '',
+				text: "",
 				href: `/category/${key}`
 			});
 		});
