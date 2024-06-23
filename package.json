@@ -59,6 +59,7 @@
 		"@skeletonlabs/skeleton": "^1.6.1",
 		"animejs": "^3.2.2",
 		"fast-fuzzy": "^1.11.2",
-		"jszip": "^3.10.1"
+		"jszip": "^3.10.1",
+		"snarkdown": "^2.0.0"
 	}
 }
