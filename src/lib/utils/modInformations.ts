@@ -1,10 +1,7 @@
 export const modInformations: { [x: string]: App.ModInformation } = {
 	minejago: {
 		texturePredicate: (filename: string) => {
-			return (
-				filename.includes('textures/item') ||
-				filename.includes('textures/modonomicon')
-			);
+			return filename.includes('textures/item') || filename.includes('textures/modonomicon');
 		},
 		modonomiconCategoryPredicate: (filename: string) => {
 			return filename.includes('modonomicon/books/wiki/categories/');
@@ -60,7 +57,7 @@ export const modInformations: { [x: string]: App.ModInformation } = {
 		repositoryId: 'thomasglasser/Minejago',
 		name: 'Potion Pot Pack',
 		icon: '/potion_pot.png'
-	},
+	}
 	// ars_caelum: {
 	// 	texturePredicate: (filename: string) => {
 	// 		return filename.includes('assets/ars_caelum/textures/item/');
@@ -371,9 +368,6 @@ export const modInformations: { [x: string]: App.ModInformation } = {
 	// }
 };
 
-export const addonList = [
-	"immersion",
-	"potion_pot"
-];
+export const addonList = ['immersion', 'potion_pot'];
 
 export const modlist = ['ars_nouveau'].concat(addonList);

@@ -3,8 +3,7 @@
 	import { notDisplayableItems } from '$lib/components/modonomicon/RecipeDisplay/notDisplayableItems';
 
 	const checkNavIcon = (iconSrc: string, textureStore: App.TextureDictionary) => {
-		if (notDisplayableItems.includes(iconSrc))
-		{
+		if (notDisplayableItems.includes(iconSrc)) {
 			return undefined;
 		}
 

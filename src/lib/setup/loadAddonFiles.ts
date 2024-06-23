@@ -51,11 +51,7 @@ const loadAndStoreAddonData = (addonToBeLoaded: string) => {
 					getMatchingJSONFiles(addonInformation.modonomiconCategoryPredicate, zip),
 					getMatchingJSONFiles(addonInformation.modonomiconEntryPredicate, zip),
 					getMatchingJSONFiles(addonInformation.languagePredicate, zip),
-					getMatchingJSONFiles(
-						addonInformation.recipePredicate,
-						zip,
-						'',
-					),
+					getMatchingJSONFiles(addonInformation.recipePredicate, zip, ''),
 					addonInformation.advancementPredicate
 						? getMatchingJSONFiles(addonInformation.advancementPredicate, zip, addonToBeLoaded)
 						: Promise.resolve()

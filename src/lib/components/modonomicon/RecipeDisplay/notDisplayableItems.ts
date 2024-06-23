@@ -60,5 +60,5 @@ export const notDisplayableItems = [
 	'minecraft:stone',
 	'minecraft:dirt',
 	'minecraft:lectern',
-	'minecraft:carved_pumpkin',
+	'minecraft:carved_pumpkin'
 ];
