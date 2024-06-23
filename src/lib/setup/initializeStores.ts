@@ -1,5 +1,5 @@
-import { preparePatchouli } from '$lib/setup/preparePatchouli';
-import { patchouliStore, recipesStore, storesLoaded, texturesStore } from '$lib/stores/fileStore';
+import { prepareModonomicon } from '$lib/setup/prepareModonomicon';
+import { modonomiconStore, recipesStore, storesLoaded, texturesStore } from '$lib/stores/fileStore';
 import { languagesStore, minecraftLanguageStore } from '$lib/stores/languageStore';
 import { getMatchingJSONFiles, getTextureFiles } from '$lib/setup/loadFiles';
 import { browser } from '$app/environment';
@@ -18,26 +18,26 @@ const initalizeMinecraftLanguageStore = (
 const initalizeDynamicallyLoadedStores = (
 	fetch: (info: RequestInfo, init?: RequestInit) => Promise<Response>
 ) => {
-	return fetch('/ars_nouveau.zip')
+	return fetch('/minejago.zip')
 		.then(prepareZip)
 		.then(async function (zip) {
 			return Promise.all([
-				getTextureFiles(modInformations.ars_nouveau.texturePredicate, zip, 'ars_nouveau'),
-				getMatchingJSONFiles(modInformations.ars_nouveau.patchouliCategoryPredicate, zip),
-				getMatchingJSONFiles(modInformations.ars_nouveau.patchouliEntryPredicate, zip),
-				getMatchingJSONFiles(modInformations.ars_nouveau.languagePredicate, zip),
-				getMatchingJSONFiles(modInformations.ars_nouveau.recipePredicate, zip)
+				getTextureFiles(modInformations.minejago.texturePredicate, zip, 'minejago'),
+				getMatchingJSONFiles(modInformations.minejago.modonomiconCategoryPredicate, zip),
+				getMatchingJSONFiles(modInformations.minejago.modonomiconEntryPredicate, zip),
+				getMatchingJSONFiles(modInformations.minejago.languagePredicate, zip),
+				getMatchingJSONFiles(modInformations.minejago.recipePredicate, zip)
 			]).then(
 				([
 					loadedTextures,
-					loadedPatchouliCategories,
-					loadedPatchouliEntries,
+					loadedModonomiconCategories,
+					loadedModonomiconEntries,
 					loadedLanguages,
 					loadedRecipes
 				]) => {
 					texturesStore.set(loadedTextures);
-					patchouliStore.set(
-						preparePatchouli(loadedPatchouliCategories, loadedPatchouliEntries, 'ars_nouveau')
+					modonomiconStore.set(
+						prepareModonomicon(loadedModonomiconCategories, loadedModonomiconEntries, 'ars_nouveau')
 					);
 					languagesStore.set(loadedLanguages);
 					recipesStore.set(loadedRecipes);
@@ -46,7 +46,7 @@ const initalizeDynamicallyLoadedStores = (
 						storesLoaded.set(false);
 					}, 86400000 /* stores should be refreshed after 1 day if the server is on for so long */);
 					if (browser) {
-						initializeSearch(loadedPatchouliCategories, loadedPatchouliEntries);
+						initializeSearch(loadedModonomiconCategories, loadedModonomiconEntries);
 					}
 				}
 			);

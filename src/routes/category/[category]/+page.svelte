@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { patchouliStore } from '$lib/stores/fileStore';
+	import { modonomiconStore } from '$lib/stores/fileStore';
 	import Label from '$lib/components/Label.svelte';
 	import { labelStore } from '$lib/stores/languageStore';
 	import { currentExpandedCategory, currentPageSource } from '$lib/stores/uiState';
@@ -8,7 +8,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data: App.PageData;
 
-	$: displayedCategory = $patchouliStore[data?.category];
+	$: displayedCategory = $modonomiconStore[data?.category];
 	$: categoryName = $labelStore(displayedCategory?.name);
 	$: $currentExpandedCategory = data?.category ? data.category : $currentExpandedCategory;
 	$: $currentPageSource = displayedCategory ? displayedCategory?.source : $currentPageSource;

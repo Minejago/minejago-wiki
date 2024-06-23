@@ -25,8 +25,8 @@ declare namespace App {
 		[x: string]: { [x: string]: string };
 	}
 
-	interface PatchouliPage {
-		type: 'patchouli_books:text' | 'patchouli_books:crafting' | 'patchouli_books:image' | string;
+	interface ModonomiconPage {
+		type: 'modonomicon:text' | 'modonomicon:crafting' | 'modonomicon:image' | string;
 		recipe?: string;
 		text?: string;
 		entries?: Array<string>; // Links in the Relations Page
@@ -34,23 +34,23 @@ declare namespace App {
 		images?: Array<string>;
 	}
 
-	interface PatchouliCategory {
+	interface ModonomiconCategory {
 		name: string;
 		id: string;
 		description: string;
-		icon: string;
+		icon: Ingredient;
 		sortnum: number;
 		entries: {
-			[x: string]: PatchouliEntry;
+			[x: string]: ModonomiconEntry;
 		};
 		source: string;
 	}
 
-	interface PatchouliEntry {
+	interface ModonomiconEntry {
 		category: string;
 		icon: string;
 		name: string;
-		pages: Array<PatchouliPage>;
+		pages: Array<ModonomiconPage>;
 		source: string;
 	}
 
@@ -64,15 +64,21 @@ declare namespace App {
 
 	type Ingredient = Tag & Item & {};
 
+	interface Potion {
+		potion: string;
+	}
+
+	interface IntProvider {
+		type: string;
+		min_inclusive: number;
+		max_inclusive: number;
+	}
+
 	interface Recipe {
 		type:
 			| 'minecraft:crafting_shaped'
 			| 'minecraft:crafting_shapeless'
-			| 'ars_nouveau:enchanting_apparatus'
-			| 'ars_nouveau:imbuement'
-			| 'ars_nouveau:enchantment'
-			| 'ars_nouveau:glyph'
-			| 'ars_nouveau:armor_upgrade'
+			| 'minejago:teapot_brewing'
 			| 'Unknown Recipe';
 	}
 
@@ -91,53 +97,13 @@ declare namespace App {
 		result: Item;
 	}
 
-	interface EnchantingApparatusRecipe extends Recipe {
-		type: 'ars_nouveau:enchanting_apparatus';
-		keepNbtOfReagent: boolean;
-		reagent: Array<Ingredient>;
-		output: Item;
-		pedestalItems: Array<Ingredient>;
-		sourceCost: number;
-	}
-
-	interface EnchantmentRecipe extends Recipe {
-		type: 'ars_nouveau:enchantment';
-		enchantment: string;
-		level: number;
-		pedestalItems: Array<Ingredient>;
-		sourceCost: number;
-	}
-
-	interface SpellWrite extends Recipe {
-		type: 'ars_nouveau:enchantment';
-		pedestalItems: Array<Ingredient>;
-		sourceCost: number;
-	}
-
-	interface GlyphRecipe extends Recipe {
-		type: 'ars_nouveau:glyph';
-		count: number;
-		exp: number;
-		inputItems: Array<Ingredient>;
-		output: Item;
-	}
-
-	interface ImbuementRecipe extends Recipe {
-		type: 'ars_nouveau:imbuement';
-		count: number;
-		input: {
-			item: Ingredient;
-		};
-		output: Item;
-		pedestalItems: Array<Ingredient>;
-		source: number;
-	}
-
-	interface ArmorUpgradeRecipe extends Recipe {
-		type: 'ars_nouveau:armor_upgrade';
-		tier: number;
-		pedestalItems: Array<Ingredient>;
-		sourceCost: number;
+	interface TeapotBrewingRecipe extends Recipe {
+		type: 'minejago:teapot_brewing';
+		base: Potion;
+		brewing_time: IntProvider;
+		experience: number;
+		ingredient: Ingredient;
+		result: Potion;
 	}
 
 	interface Advancement {
@@ -152,8 +118,8 @@ declare namespace App {
 		};
 	}
 
-	interface PatchouliStore {
-		[x: string]: PatchouliCategory;
+	interface ModonomiconStore {
+		[x: string]: ModonomiconCategory;
 	}
 
 	interface RecipeDictionary {
@@ -180,8 +146,8 @@ declare namespace App {
 
 	export interface ModInformation {
 		texturePredicate: (filename: string) => boolean;
-		patchouliCategoryPredicate: (filename: string) => boolean;
-		patchouliEntryPredicate: (filename: string) => boolean;
+		modonomiconCategoryPredicate: (filename: string) => boolean;
+		modonomiconEntryPredicate: (filename: string) => boolean;
 		recipePredicate: (filename: string) => boolean;
 		languagePredicate: (filename: string) => boolean;
 		advancementPredicate?: (filename: string) => boolean;

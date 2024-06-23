@@ -9,3 +9,5 @@ node_modules
 .idea
 .vscode
 yarn.lock
+pnpm-lock.yaml
+package-lock.json

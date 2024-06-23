@@ -7,10 +7,7 @@ import {
 import { loadedAddonStore } from '$lib/stores/addonStore';
 
 const getModLabel = (label: string): string | undefined => {
-	if (label == 'source_berry') {
-		return getLabelWithCurrentValues('block.ars_nouveau.sourceberry_bush');
-	}
-	const loadedMods = ['ars_nouveau', ...get(loadedAddonStore)];
+	const loadedMods = ['minejago', ...get(loadedAddonStore)];
 	let labelToReturn = label;
 	let foundLabel;
 	for (let i = 0; i < loadedMods.length; i++) {
@@ -21,14 +18,9 @@ const getModLabel = (label: string): string | undefined => {
 			labelToReturn = foundLabel;
 			break;
 		}
-		// Hail Mary because Glyphs are done in an annoying way
 		if (foundLabel.startsWith(`block.${loadedMods[i]}`)) {
-			foundLabel = getLabelWithCurrentValues(`${loadedMods[i]}.glyph_name.glyph_${label}`);
+			foundLabel = getLabelWithCurrentValues(`block.${loadedMods[i]}.${label}`);
 		} else {
-			labelToReturn = foundLabel;
-			break;
-		}
-		if (!foundLabel.startsWith(`${loadedMods[i]}.glyph_name.glyph_`)) {
 			labelToReturn = foundLabel;
 			break;
 		}

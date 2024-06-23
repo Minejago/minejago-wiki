@@ -1,13 +1,13 @@
 import { Searcher } from 'fast-fuzzy';
 import { getLabelWithCurrentValues } from '$lib/languages';
 import { searchStore } from '$lib/stores/searchStore';
-import { patchouliStore } from '$lib/stores/fileStore';
+import { modonomiconStore } from '$lib/stores/fileStore';
 import { get } from 'svelte/store';
 
-const getEntryText = (entry: App.PatchouliEntry) => {
+const getEntryText = (entry: App.ModonomiconEntry) => {
 	let text = '';
-	entry.pages.forEach((page: App.PatchouliPage) => {
-		if (page.type === 'patchouli_books:text' && page.text) {
+	entry.pages.forEach((page: App.ModonomiconPage) => {
+		if (page.type === 'modonomicon:text' && page.text) {
 			text += getLabelWithCurrentValues(page.text);
 		}
 	});
@@ -15,20 +15,20 @@ const getEntryText = (entry: App.PatchouliEntry) => {
 };
 
 export const updateSearch = () => {
-	const patchouli = get(patchouliStore);
-	if (patchouli) {
-		const entries = Object.values(patchouli)
+	const modonomicon = get(modonomiconStore);
+	if (modonomicon) {
+		const entries = Object.values(modonomicon)
 			.map((category) => category.entries)
 			.reduce((previousValue, currentValue) => {
 				return { ...previousValue, ...currentValue };
 			}, {});
-		initializeSearch(patchouli, entries);
+		initializeSearch(modonomicon, entries);
 	}
 };
 
 export const initializeSearch = (
-	categories: { [x: string]: App.PatchouliCategory } | undefined,
-	entries: { [x: string]: App.PatchouliEntry } | undefined
+	categories: { [x: string]: App.ModonomiconCategory } | undefined,
+	entries: { [x: string]: App.ModonomiconEntry } | undefined
 ) => {
 	const searchCandidates: Array<App.SearchCandidate> = [];
 	if (categories) {

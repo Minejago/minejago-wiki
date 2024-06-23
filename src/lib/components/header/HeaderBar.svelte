@@ -5,7 +5,6 @@
 	import SmartSearch from '$lib/components/search/SmartSearch.svelte';
 	import LanguageSelection from '$lib/components/LanguageSelection.svelte';
 	import AddonMenu from '$lib/components/addonMenu/AddonMenu.svelte';
-	import StarbuncleRun from '$lib/components/header/StarbuncleRun.svelte';
 
 	// Drawer Handler
 	function drawerOpen(): void {
@@ -25,11 +24,10 @@
 	<div class="flex flex-row">
 		<a
 			class="hidden sm:block text-sm sm:text-lg md:text-3xl font-bold uppercase mr-4"
-			href="/static"
-			id="ars_nouveau_wiki"
-			title="Return to main page">Ars Nouveau Wiki</a
+			href="/"
+			id="minejago_wiki"
+			title="Return to main page">Minejago Wiki</a
 		>
-		<StarbuncleRun />
 	</div>
 	<svelte:fragment slot="trail">
 		<div class="hidden lg:block">

@@ -2,7 +2,7 @@ import { loadedAddonStore, selectedAddonStore } from '$lib/stores/addonStore';
 import { get } from 'svelte/store';
 import {
 	advancementStore,
-	patchouliStore,
+	modonomiconStore,
 	recipesStore,
 	texturesStore
 } from '$lib/stores/fileStore';
@@ -10,24 +10,9 @@ import { getAddonURL } from '$lib/utils/apiUtils';
 import { modInformations } from '$lib/utils/modInformations';
 import { prepareZip } from '$lib/setup/prepareZip';
 import { getMatchingJSONFiles, getTextureFiles } from '$lib/setup/loadFiles';
-import { preparePatchouli } from '$lib/setup/preparePatchouli';
+import { prepareModonomicon } from '$lib/setup/prepareModonomicon';
 import { languagesStore } from '$lib/stores/languageStore';
 import { updateSearch } from '$lib/setup/initializeSearch';
-
-const fixApparatusRecipesIfNecessary = (recipe: any) => {
-	if (recipe.type === 'ars_nouveau:enchanting_apparatus' && recipe.item_1) {
-		recipe.pedestalItems = [];
-		for (let i = 1; i < 9; i++) {
-			if (recipe[`item_${i}`]) {
-				// Gods damn it, Bailey.
-				recipe.pedestalItems.push(recipe[`item_${i}`][0]);
-			}
-		}
-		return recipe;
-	} else {
-		return recipe;
-	}
-};
 
 const isObject = (item: any) => {
 	return item && typeof item === 'object' && !Array.isArray(item);
@@ -63,14 +48,13 @@ const loadAndStoreAddonData = (addonToBeLoaded: string) => {
 			.then(async function (zip) {
 				return Promise.all([
 					getTextureFiles(addonInformation.texturePredicate, zip, addonToBeLoaded),
-					getMatchingJSONFiles(addonInformation.patchouliCategoryPredicate, zip),
-					getMatchingJSONFiles(addonInformation.patchouliEntryPredicate, zip),
+					getMatchingJSONFiles(addonInformation.modonomiconCategoryPredicate, zip),
+					getMatchingJSONFiles(addonInformation.modonomiconEntryPredicate, zip),
 					getMatchingJSONFiles(addonInformation.languagePredicate, zip),
 					getMatchingJSONFiles(
 						addonInformation.recipePredicate,
 						zip,
 						'',
-						fixApparatusRecipesIfNecessary
 					),
 					addonInformation.advancementPredicate
 						? getMatchingJSONFiles(addonInformation.advancementPredicate, zip, addonToBeLoaded)
@@ -78,17 +62,17 @@ const loadAndStoreAddonData = (addonToBeLoaded: string) => {
 				]).then(
 					([
 						loadedTextures,
-						loadedPatchouliCategories,
-						loadedPatchouliEntries,
+						loadedModonomiconCategories,
+						loadedModonomiconEntries,
 						loadedLanguages,
 						loadedRecipes,
 						loadedAdvancements
 					]) => {
 						texturesStore.set({ ...get(texturesStore), ...loadedTextures });
-						patchouliStore.set(
-							preparePatchouli(
-								{ ...get(patchouliStore), ...loadedPatchouliCategories },
-								loadedPatchouliEntries,
+						modonomiconStore.set(
+							prepareModonomicon(
+								{ ...get(modonomiconStore), ...loadedModonomiconCategories },
+								loadedModonomiconEntries,
 								addonToBeLoaded
 							)
 						);
@@ -112,9 +96,9 @@ export const subscribeToAddonStore = () => {
 		const needToUnload = currentlyLoaded.filter((addon) => !selectedAddons.includes(addon));
 
 		needToUnload.forEach((addonToRemove) => {
-			let patchouliData = get(patchouliStore);
+			let modonomiconData = get(modonomiconStore);
 			// @ts-ignore
-			patchouliData = Object.entries(patchouliData)
+			modonomiconData = Object.entries(modonomiconData)
 				.filter(([_, category]) => category.source !== addonToRemove)
 				.map(([key, value]) => {
 					value.entries = Object.entries(value.entries)
@@ -127,7 +111,7 @@ export const subscribeToAddonStore = () => {
 				.reduce((previousValue, currentValue) => {
 					return { ...previousValue, ...currentValue };
 				}, {});
-			patchouliStore.set(patchouliData);
+			modonomiconStore.set(modonomiconData);
 			loadedAddonStore.set(
 				get(loadedAddonStore).filter((loadedAddon) => loadedAddon !== addonToRemove)
 			);

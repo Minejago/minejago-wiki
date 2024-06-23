@@ -1,29 +1,12 @@
 <script lang="ts" context="module">
 	import { getItemSrc } from '$lib/textures.js';
-	import { notDisplayableItems } from '$lib/components/patchouli/RecipeDisplay/notDisplayableItems';
+	import { notDisplayableItems } from '$lib/components/modonomicon/RecipeDisplay/notDisplayableItems';
 
 	const checkNavIcon = (iconSrc: string, textureStore: App.TextureDictionary) => {
-		if (
-			iconSrc.includes('spell_book') ||
-			notDisplayableItems.includes(iconSrc) ||
-			iconSrc.includes('ritual_dummy')
-		) {
+		if (notDisplayableItems.includes(iconSrc))
+		{
 			return undefined;
 		}
-		if (iconSrc.includes('glyph_')) {
-			if (
-				iconSrc.includes('life_tap') ||
-				iconSrc.includes('black_hole') ||
-				iconSrc.includes('death_grip')
-			) {
-				return getItemSrc(
-					iconSrc.replace('glyph_', '').replace('ars_nouveau', 'ars_mage_fight'),
-					textureStore
-				);
-			}
-			return getItemSrc(iconSrc.replace('glyph_', ''), textureStore);
-		}
-		//cards
 
 		return getItemSrc(iconSrc, textureStore);
 	};
@@ -31,7 +14,7 @@
 
 <script lang="ts">
 	import { currentExpandedCategory, storeCurrentUrl } from '$lib/stores/uiState.js';
-	import { patchouliStore } from '$lib/stores/fileStore';
+	import { modonomiconStore } from '$lib/stores/fileStore';
 	import { Accordion, AccordionItem, drawerStore } from '@skeletonlabs/skeleton';
 	import { afterNavigate } from '$app/navigation';
 	import { scrollSelectionIntoView } from '$lib/components/navigation/scrollHelper';
@@ -47,7 +30,7 @@
 		drawerStore.close();
 	}
 
-	$: sortedCategories = Object.values($patchouliStore)
+	$: sortedCategories = Object.values($modonomiconStore)
 		.filter((category) => !!category.entries)
 		.sort((categoryA, categoryB) => categoryA.sortnum - categoryB.sortnum);
 	afterNavigate(() => {
@@ -60,7 +43,7 @@
 		{#each sortedCategories as category, i}
 			<AccordionItem open={$currentExpandedCategory === category.id}>
 				<svelte:fragment slot="lead">
-					{@const iconSrc = checkNavIcon(category.icon, $texturesStore)}
+					{@const iconSrc = checkNavIcon(category.icon.item, $texturesStore)}
 					{#if iconSrc}
 						<img alt={`Icon for category ${category.name}`} src={iconSrc} class="navIcon" />
 					{:else}

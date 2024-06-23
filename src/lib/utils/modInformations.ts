@@ -1,370 +1,379 @@
 export const modInformations: { [x: string]: App.ModInformation } = {
-	ars_nouveau: {
+	minejago: {
 		texturePredicate: (filename: string) => {
 			return (
 				filename.includes('textures/item') ||
-				// Images in Patchouli Book
-				filename.includes('textures/gui/entries')
+				filename.includes('textures/modonomicon')
 			);
 		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes('patchouli_books/worn_notebook/en_us/categories/');
+		modonomiconCategoryPredicate: (filename: string) => {
+			return filename.includes('modonomicon/books/wiki/categories/');
 		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes('patchouli_books/worn_notebook/en_us/entries/');
+		modonomiconEntryPredicate: (filename: string) => {
+			return filename.includes('modonomicon/books/wiki/entries/');
 		},
 		recipePredicate: (filename: string) => {
-			return filename.includes('recipes');
+			return filename.includes('recipe');
 		},
 		languagePredicate: (filename: string) => {
 			return filename.includes('lang');
 		},
-		repositoryId: 'baileyholl/Ars-Nouveau',
-		name: 'Ars Nouveau'
+		repositoryId: 'thomasglasser/Minejago',
+		name: 'Minejago'
 	},
-	ars_creo: {
+	immersion: {
 		texturePredicate: (filename: string) => {
-			return filename.includes('textures/items');
+			return filename.includes('textures/item');
 		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes('patchouli_books/artificers_notes/en_us/categories/');
+		modonomiconCategoryPredicate: (filename: string) => {
+			return filename.includes('modonomicon/books/immersion_wiki/categories/');
 		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes('patchouli_books/artificers_notes/en_us/entries/');
+		modonomiconEntryPredicate: (filename: string) => {
+			return filename.includes('modonomicon/books/immersion_wiki/entries/');
 		},
 		recipePredicate: (filename: string) => {
-			return filename.includes('recipes');
+			return filename.includes('recipe');
 		},
 		languagePredicate: (filename: string) => {
 			return filename.includes('lang');
 		},
-		repositoryId: 'baileyholl/Ars-Creo',
-		name: 'Ars Creo',
-		icon: '/creo.png'
+		repositoryId: 'thomasglasser/Minejago',
+		name: 'Immersion Pack',
+		icon: '/immersion.png'
 	},
-	ars_caelum: {
+	potion_pot: {
 		texturePredicate: (filename: string) => {
-			return filename.includes('assets/ars_caelum/textures/item/');
+			return filename.includes('textures/item');
 		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes('patchouli_books/caelum_notes/en_us/categories');
+		modonomiconCategoryPredicate: (filename: string) => {
+			return filename.includes('modonomicon/books/potion_pot_wiki/categories/');
 		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes('patchouli_books/caelum_notes/en_us/entries');
+		modonomiconEntryPredicate: (filename: string) => {
+			return filename.includes('modonomicon/books/potion_pot_wiki/entries/');
 		},
 		recipePredicate: (filename: string) => {
-			return filename.includes('data/ars_caelum/recipes/');
+			return filename.includes('recipe');
 		},
 		languagePredicate: (filename: string) => {
-			return filename.includes('ars_caelum/lang/');
+			return filename.includes('lang');
 		},
-		repositoryId: 'baileyholl/ars-caelum',
-		name: 'Ars Caelum',
-		icon: '/caelum.png'
+		repositoryId: 'thomasglasser/Minejago',
+		name: 'Potion Pot Pack',
+		icon: '/potion_pot.png'
 	},
-
-	ars_elemental: {
-		texturePredicate: (filename: string) => {
-			return (
-				(filename.includes('src/main/resources/assets/ars_arsenal/textures/item/') ||
-					filename.includes('src/main/resources/assets/ars_nouveau/textures/items/') ||
-					filename.includes('src/main/resources/assets/ars_elemental/textures/item/')) &&
-				!(filename.includes('watery_grave.png') || filename.includes('conjure_terrain.png'))
-			);
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/generated/resources/assets/ars_nouveau/patchouli_books/worn_notebook/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/generated/resources/assets/ars_nouveau/patchouli_books/worn_notebook/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return (
-				filename.includes('src/generated/resources/data/ars_elemental/recipes/') ||
-				filename.includes('src/main/resources/data/ars_elemental/recipes/')
-			);
-		},
-		languagePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/ars_elemental/lang/');
-		},
-		repositoryId: 'Alexthw46/Ars-Elemental',
-		name: 'Ars Elemental',
-		icon: '/ars_elemental_logo.png'
-	},
-	ars_gears: {
-		texturePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/ars_gears/textures');
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_gears/patchouli_books/worn_notebook/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_gears/patchouli_books/worn_notebook/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/data/ars_gears/recipes/');
-		},
-		languagePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/ars_gears/lang');
-		},
-		repositoryId: 'Cycro54/Ars_GEARs',
-		name: 'Ars G.E.A.R.S',
-		icon: '/arcane_combat_gear.png'
-	},
-	ars_instrumentum: {
-		texturePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/ars_instrumentum/textures/items/');
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_instrumentum/patchouli_books/wizards_scratchpad/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_instrumentum/patchouli_books/wizards_scratchpad/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/data/ars_instrumentum/recipes/') ||
-				filename.includes('src/generated/resources/data/ars_instrumentum/recipes') ||
-				filename.includes('src/generated/resources/data/ars_instrumentum/recipes/apparatus') ||
-				filename.includes('src/generated/resources/data/ars_instrumentum/recipes/imbuement')
-			);
-		},
-		languagePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/assets/ars_instrumentum/lang') ||
-				filename.includes('src/generated/resources/assets/ars_instrumentum/lang')
-			);
-		},
-		repositoryId: 'Sarenor/Ars-Instrumentum',
-		repositoryBranch: 'documentation',
-		name: 'Ars Instrumentum',
-		icon: '/wizards_armarium.png'
-	},
-	ars_mage_fight: {
-		texturePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/assets/ars_mage_fight/textures') ||
-				filename.includes('src/main/resources/assets/ars_nouveau/textures/items/')
-			);
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_mage_fight/patchouli_books/worn_notebook/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_mage_fight/patchouli_books/worn_notebook/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/data/ars_mage_fight/recipes/');
-		},
-		languagePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/ars_mage_fight/lang');
-		},
-		repositoryId: 'Cycro54/Ars_Mage_Fight',
-		name: 'Ars Mage Fight',
-		icon: '/black_hole.png'
-	},
-	arsocultas: {
-		texturePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/ars_ocultas/textures/item');
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/assets/ars_nouveau/patchouli_books/worn_notebook/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/assets/ars_nouveau/patchouli_books/worn_notebook/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/data/ars_ocultas/recipes/');
-		},
-		languagePredicate: () => {
-			return false;
-		},
-		repositoryId: 'mystchonky/Ars-Ocultas',
-		name: 'Ars Ocultas',
-		icon: '/ocultas.png'
-	},
-	arsomega: {
-		texturePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/assets/arsomega/textures/items/') ||
-				// Images in Patchouli Book
-				filename.includes('src/main/resources/assets/ars_nouveau/textures/items/')
-			);
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/arsomega/patchouli_books/tornnotes/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/arsomega/patchouli_books/tornnotes/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/data/ars_nouveau/recipes/') ||
-				filename.includes('src/main/resources/data/arsomega/recipes/')
-			);
-		},
-		languagePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/arsomega/lang');
-		},
-		advancementPredicate: (filename: string) => {
-			return filename.includes('src/main/resources/data/arsomega/advancements');
-		},
-		repositoryId: 'dkmk100/ArsOmega',
-		name: 'Ars Omega',
-		icon: '/demonic_crystal.png'
-	},
-	ars_scalaes: {
-		texturePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/assets/ars_scalaes/textures/item/') &&
-				!(
-					filename.includes('expand.png') ||
-					filename.includes('resize.png') ||
-					filename.includes('shrink.png') ||
-					filename.includes('morph.png')
-				)
-			);
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_scalaes/patchouli_books/scalaes/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_scalaes/patchouli_books/scalaes/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return (
-				filename.includes('src/generated/resources/data/ars_scalaes/recipes') ||
-				filename.includes('src/main/resources/data/ars_scalaes/recipes/')
-			);
-		},
-		languagePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/ars_scalaes/lang');
-		},
-		repositoryId: 'Alexthw46/Ars-Scalaes',
-		name: 'Ars Scalaes',
-		icon: '/scalaes.png'
-	},
-	starbunclemania: {
-		texturePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/starbunclemania/textures/item/');
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'/src/generated/resources/data/starbunclemania/patchouli_books/starbunclemania/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'/src/generated/resources/data/starbunclemania/patchouli_books/starbunclemania/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return (
-				filename.includes('src/generated/resources/data/starbunclemania/recipes/') ||
-				filename.includes('src/main/resources/data/starbunclemania/recipes/')
-			);
-		},
-		languagePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/starbunclemania/lang/');
-		},
-		repositoryId: 'Alexthw46/StarbuncleMania',
-		name: 'Starbuncle Mania',
-		icon: '/starbuncle_charm.png'
-	},
-	tome_of_blood: {
-		texturePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/tomeofblood/textures/');
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/assets/ars_nouveau/patchouli_books/worn_notebook/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/assets/ars_nouveau/patchouli_books/worn_notebook/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return (
-				filename.includes('src/generated/resources/data/ars_nouveau/recipes/') ||
-				filename.includes('src/generated/resources/data/tomeofblood/recipes/')
-			);
-		},
-		languagePredicate: (filename: string) => {
-			return filename.includes('src/generated/resources/assets/tomeofblood/lang');
-		},
-		repositoryId: 'mystchonky/Tome-of-Blood',
-		name: 'Tome of Blood',
-		icon: '/tomeofblood.png'
-	},
-	too_many_glyphs: {
-		texturePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/toomanyglyphs/textures/items/');
-		},
-		patchouliCategoryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_nouveau/patchouli_books/worn_notebook/en_us/categories/'
-			);
-		},
-		patchouliEntryPredicate: (filename: string) => {
-			return filename.includes(
-				'src/main/resources/data/ars_nouveau/patchouli_books/worn_notebook/en_us/entries/'
-			);
-		},
-		recipePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/data/ars_nouveau/recipes');
-		},
-		languagePredicate: (filename: string) => {
-			return filename.includes('src/main/resources/assets/ars_nouveau/lang');
-		},
-		repositoryId: 'DerringersMods/TooManyGlyphs',
-		name: 'Too Many Glyphs',
-		icon: '/chaining.png'
-	}
+	// ars_caelum: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return filename.includes('assets/ars_caelum/textures/item/');
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes('modonomicon/caelum_notes/en_us/categories');
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes('modonomicon/caelum_notes/en_us/entries');
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return filename.includes('data/ars_caelum/recipes/');
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('ars_caelum/lang/');
+	// 	},
+	// 	repositoryId: 'baileyholl/ars-caelum',
+	// 	name: 'Ars Caelum',
+	// 	icon: '/caelum.png'
+	// },
+	//
+	// ars_elemental: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return (
+	// 			(filename.includes('src/main/resources/assets/ars_arsenal/textures/item/') ||
+	// 				filename.includes('src/main/resources/assets/ars_nouveau/textures/items/') ||
+	// 				filename.includes('src/main/resources/assets/ars_elemental/textures/item/')) &&
+	// 			!(filename.includes('watery_grave.png') || filename.includes('conjure_terrain.png'))
+	// 		);
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/generated/resources/assets/ars_nouveau/modonomicon/books/wiki/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/generated/resources/assets/ars_nouveau/modonomicon/books/wiki/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/generated/resources/data/ars_elemental/recipes/') ||
+	// 			filename.includes('src/main/resources/data/ars_elemental/recipes/')
+	// 		);
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/ars_elemental/lang/');
+	// 	},
+	// 	repositoryId: 'Alexthw46/Ars-Elemental',
+	// 	name: 'Ars Elemental',
+	// 	icon: '/ars_elemental_logo.png'
+	// },
+	// ars_gears: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/ars_gears/textures');
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_gears/modonomicon/books/wiki/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_gears/modonomicon/books/wiki/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/data/ars_gears/recipes/');
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/ars_gears/lang');
+	// 	},
+	// 	repositoryId: 'Cycro54/Ars_GEARs',
+	// 	name: 'Ars G.E.A.R.S',
+	// 	icon: '/arcane_combat_gear.png'
+	// },
+	// ars_instrumentum: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/ars_instrumentum/textures/items/');
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_instrumentum/modonomicon/wizards_scratchpad/en_us/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_instrumentum/modonomicon/wizards_scratchpad/en_us/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/main/resources/data/ars_instrumentum/recipes/') ||
+	// 			filename.includes('src/generated/resources/data/ars_instrumentum/recipes') ||
+	// 			filename.includes('src/generated/resources/data/ars_instrumentum/recipes/apparatus') ||
+	// 			filename.includes('src/generated/resources/data/ars_instrumentum/recipes/imbuement')
+	// 		);
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/main/resources/assets/ars_instrumentum/lang') ||
+	// 			filename.includes('src/generated/resources/assets/ars_instrumentum/lang')
+	// 		);
+	// 	},
+	// 	repositoryId: 'Sarenor/Ars-Instrumentum',
+	// 	repositoryBranch: 'documentation',
+	// 	name: 'Ars Instrumentum',
+	// 	icon: '/wizards_armarium.png'
+	// },
+	// ars_mage_fight: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/main/resources/assets/ars_mage_fight/textures') ||
+	// 			filename.includes('src/main/resources/assets/ars_nouveau/textures/items/')
+	// 		);
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_mage_fight/modonomicon/books/wiki/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_mage_fight/modonomicon/books/wiki/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/data/ars_mage_fight/recipes/');
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/ars_mage_fight/lang');
+	// 	},
+	// 	repositoryId: 'Cycro54/Ars_Mage_Fight',
+	// 	name: 'Ars Mage Fight',
+	// 	icon: '/black_hole.png'
+	// },
+	// arsocultas: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/ars_ocultas/textures/item');
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/assets/ars_nouveau/modonomicon/books/wiki/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/assets/ars_nouveau/modonomicon/books/wiki/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/data/ars_ocultas/recipes/');
+	// 	},
+	// 	languagePredicate: () => {
+	// 		return false;
+	// 	},
+	// 	repositoryId: 'mystchonky/Ars-Ocultas',
+	// 	name: 'Ars Ocultas',
+	// 	icon: '/ocultas.png'
+	// },
+	// arsomega: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/main/resources/assets/arsomega/textures/items/') ||
+	// 			// Images in Modonomicon Book
+	// 			filename.includes('src/main/resources/assets/ars_nouveau/textures/items/')
+	// 		);
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/arsomega/modonomicon/tornnotes/en_us/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/arsomega/modonomicon/tornnotes/en_us/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/main/resources/data/ars_nouveau/recipes/') ||
+	// 			filename.includes('src/main/resources/data/arsomega/recipes/')
+	// 		);
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/arsomega/lang');
+	// 	},
+	// 	advancementPredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/data/arsomega/advancements');
+	// 	},
+	// 	repositoryId: 'dkmk100/ArsOmega',
+	// 	name: 'Ars Omega',
+	// 	icon: '/demonic_crystal.png'
+	// },
+	// ars_scalaes: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/main/resources/assets/ars_scalaes/textures/item/') &&
+	// 			!(
+	// 				filename.includes('expand.png') ||
+	// 				filename.includes('resize.png') ||
+	// 				filename.includes('shrink.png') ||
+	// 				filename.includes('morph.png')
+	// 			)
+	// 		);
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_scalaes/modonomicon/scalaes/en_us/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_scalaes/modonomicon/scalaes/en_us/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/generated/resources/data/ars_scalaes/recipes') ||
+	// 			filename.includes('src/main/resources/data/ars_scalaes/recipes/')
+	// 		);
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/ars_scalaes/lang');
+	// 	},
+	// 	repositoryId: 'Alexthw46/Ars-Scalaes',
+	// 	name: 'Ars Scalaes',
+	// 	icon: '/scalaes.png'
+	// },
+	// starbunclemania: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/starbunclemania/textures/item/');
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'/src/generated/resources/data/starbunclemania/modonomicon/starbunclemania/en_us/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'/src/generated/resources/data/starbunclemania/modonomicon/starbunclemania/en_us/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/generated/resources/data/starbunclemania/recipes/') ||
+	// 			filename.includes('src/main/resources/data/starbunclemania/recipes/')
+	// 		);
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/starbunclemania/lang/');
+	// 	},
+	// 	repositoryId: 'Alexthw46/StarbuncleMania',
+	// 	name: 'Starbuncle Mania',
+	// 	icon: '/starbuncle_charm.png'
+	// },
+	// tome_of_blood: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/tomeofblood/textures/');
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/assets/ars_nouveau/modonomicon/books/wiki/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/assets/ars_nouveau/modonomicon/books/wiki/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return (
+	// 			filename.includes('src/generated/resources/data/ars_nouveau/recipes/') ||
+	// 			filename.includes('src/generated/resources/data/tomeofblood/recipes/')
+	// 		);
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('src/generated/resources/assets/tomeofblood/lang');
+	// 	},
+	// 	repositoryId: 'mystchonky/Tome-of-Blood',
+	// 	name: 'Tome of Blood',
+	// 	icon: '/tomeofblood.png'
+	// },
+	// too_many_glyphs: {
+	// 	texturePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/toomanyglyphs/textures/items/');
+	// 	},
+	// 	modonomiconCategoryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_nouveau/modonomicon/books/wiki/categories/'
+	// 		);
+	// 	},
+	// 	modonomiconEntryPredicate: (filename: string) => {
+	// 		return filename.includes(
+	// 			'src/main/resources/data/ars_nouveau/modonomicon/books/wiki/entries/'
+	// 		);
+	// 	},
+	// 	recipePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/data/ars_nouveau/recipes');
+	// 	},
+	// 	languagePredicate: (filename: string) => {
+	// 		return filename.includes('src/main/resources/assets/ars_nouveau/lang');
+	// 	},
+	// 	repositoryId: 'DerringersMods/TooManyGlyphs',
+	// 	name: 'Too Many Glyphs',
+	// 	icon: '/chaining.png'
+	// }
 };
 
 export const addonList = [
-	'ars_creo',
-	'ars_caelum',
-	'ars_elemental',
-	'ars_gears',
-	'ars_instrumentum',
-	'ars_mage_fight',
-	'arsocultas',
-	'arsomega',
-	'ars_scalaes',
-	'starbunclemania',
-	'tome_of_blood',
-	'too_many_glyphs'
+	"immersion",
+	"potion_pot"
 ];
 
 export const modlist = ['ars_nouveau'].concat(addonList);
