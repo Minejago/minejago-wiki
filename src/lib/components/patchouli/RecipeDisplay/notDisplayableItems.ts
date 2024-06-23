@@ -177,6 +177,5 @@ export const notDisplayableItems = [
 	'minecraft:dirt',
 	'minecraft:lectern',
 	'minecraft:carved_pumpkin',
-	'tomeofblood:archmage_tome_of_blood',
-	
+	'tomeofblood:archmage_tome_of_blood'
 ];

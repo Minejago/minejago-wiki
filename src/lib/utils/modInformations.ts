@@ -24,9 +24,7 @@ export const modInformations: { [x: string]: App.ModInformation } = {
 	},
 	ars_creo: {
 		texturePredicate: (filename: string) => {
-			return (
-				filename.includes('textures/items')
-			);
+			return filename.includes('textures/items');
 		},
 		patchouliCategoryPredicate: (filename: string) => {
 			return filename.includes('patchouli_books/artificers_notes/en_us/categories/');
@@ -45,11 +43,8 @@ export const modInformations: { [x: string]: App.ModInformation } = {
 		icon: '/creo.png'
 	},
 	ars_caelum: {
-		
 		texturePredicate: (filename: string) => {
-			return (
-				filename.includes('assets/ars_caelum/textures/item/')
-			);
+			return filename.includes('assets/ars_caelum/textures/item/');
 		},
 		patchouliCategoryPredicate: (filename: string) => {
 			return filename.includes('patchouli_books/caelum_notes/en_us/categories');
@@ -186,9 +181,7 @@ export const modInformations: { [x: string]: App.ModInformation } = {
 	},
 	arsocultas: {
 		texturePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/assets/ars_ocultas/textures/item')
-			);
+			return filename.includes('src/main/resources/assets/ars_ocultas/textures/item');
 		},
 		patchouliCategoryPredicate: (filename: string) => {
 			return filename.includes(
@@ -201,9 +194,7 @@ export const modInformations: { [x: string]: App.ModInformation } = {
 			);
 		},
 		recipePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/data/ars_ocultas/recipes/')
-			);
+			return filename.includes('src/main/resources/data/ars_ocultas/recipes/');
 		},
 		languagePredicate: () => {
 			return false;
@@ -310,9 +301,7 @@ export const modInformations: { [x: string]: App.ModInformation } = {
 	},
 	tome_of_blood: {
 		texturePredicate: (filename: string) => {
-			return (
-				filename.includes('src/main/resources/assets/tomeofblood/textures/')
-			);
+			return filename.includes('src/main/resources/assets/tomeofblood/textures/');
 		},
 		patchouliCategoryPredicate: (filename: string) => {
 			return filename.includes(

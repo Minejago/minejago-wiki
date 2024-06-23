@@ -34,9 +34,8 @@ export const getMatchingJSONFiles = (
 				file.async('string').then((value) => {
 					const json = JSON.parse(value);
 					return {
-						[originId ? originId + ':' + getFileName(file.name) : getFileName(file.name)]: additionalTransformation
-							? additionalTransformation(json)
-							: json
+						[originId ? originId + ':' + getFileName(file.name) : getFileName(file.name)]:
+							additionalTransformation ? additionalTransformation(json) : json
 					};
 				})
 			)

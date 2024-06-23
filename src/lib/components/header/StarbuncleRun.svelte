@@ -10,16 +10,18 @@
 	};
 
 	enum StateTypes {
-		FORWARDS = "FORWARDS",
-		BACKWARDS = "BACKWARDS",
-		WAITING = "WAITING",
+		FORWARDS = 'FORWARDS',
+		BACKWARDS = 'BACKWARDS',
+		WAITING = 'WAITING'
 	}
 
 	function getType(newState: StateTypes) {
-		switch(newState) {
+		switch (newState) {
 			case 'FORWARDS':
-			case 'BACKWARDS': return "run"
-			default: return "sitting"
+			case 'BACKWARDS':
+				return 'run';
+			default:
+				return 'sitting';
 		}
 	}
 
@@ -38,8 +40,8 @@
 	function setState(newState: StateTypes) {
 		state = newState;
 		const type = getType(newState);
-		const color = starbuncle.color === "rainbow" ? "white" : starbuncle.color;
-		src = `/runningbuncle/starbuncle_${type}_${color}.${type === "run" ? "gif" : "png"}`
+		const color = starbuncle.color === 'rainbow' ? 'white' : starbuncle.color;
+		src = `/runningbuncle/starbuncle_${type}_${color}.${type === 'run' ? 'gif' : 'png'}`;
 	}
 
 	setState(StateTypes.FORWARDS);
@@ -50,90 +52,45 @@
 
 	onMount(() => {
 		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-			anime.timeline({
-				targets: '.buncle-box',
-				loop: true,
-				easing: 'linear'
-			}).add({
-				translateX: '79%',
-				duration: 3500,
-				changeBegin(anim) {
-					setState(StateTypes.FORWARDS);
-				},
-			}).add({
-				duration: 5000,
-				changeBegin(anim) {
-					setState(StateTypes.WAITING);
-				},
-			}).add({
-				translateX: '-25%',
-				endDelay: 1000,
-				duration: 3500,
-				changeBegin(anim) {
-					setState(StateTypes.BACKWARDS);
-				},
-				changeComplete(anim) {
-					starbuncle = starbuncles[getRandomStarbuncleIndex()];
-				},
-			})
+			anime
+				.timeline({
+					targets: '.buncle-box',
+					loop: true,
+					easing: 'linear'
+				})
+				.add({
+					translateX: '79%',
+					duration: 3500,
+					changeBegin(anim) {
+						setState(StateTypes.FORWARDS);
+					}
+				})
+				.add({
+					duration: 5000,
+					changeBegin(anim) {
+						setState(StateTypes.WAITING);
+					}
+				})
+				.add({
+					translateX: '-25%',
+					endDelay: 1000,
+					duration: 3500,
+					changeBegin(anim) {
+						setState(StateTypes.BACKWARDS);
+					},
+					changeComplete(anim) {
+						starbuncle = starbuncles[getRandomStarbuncleIndex()];
+					}
+				});
 		}
 
 		fetch('https://raw.githubusercontent.com/baileyholl/Ars-Nouveau/main/supporters.json')
-			.then(response => response.json())
-			.then(data => {
+			.then((response) => response.json())
+			.then((data) => {
 				starbuncles.push(...data.starbuncleAdoptions);
 			});
 	});
 </script>
-
-<style>
-    .buncle-container {
-        position: relative;
-        overflow: hidden;
-        height: 50px;
-				max-width: 800px;
-        flex-grow: 1;
-    }
-
-    .buncle-box {
-        position: absolute;
-        height: 50px;
-    }
-
-    .buncle {
-        height: 50px;
-        margin-left: -3px;
-    }
-
-    .buncle-name {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .mirrored {
-        transform: scaleX(-1);
-        margin-left: -7px;
-    }
-
-	.rainbow {
-        animation-name: rainbow;
-        animation-duration: 15s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-    }
-
-    @keyframes rainbow {
-        0% {
-            filter: sepia() saturate(2.25) hue-rotate(0deg);
-        }
-        100% {
-            filter: sepia() saturate(2.25) hue-rotate(360deg);
-        }
-    }
-</style>
-
 
 <div class="buncle-container" use:popup={popupSettings}>
 	<div class="buncle-name flex flex-col items-center">
@@ -141,7 +98,13 @@
 		<p class="text-xs text-gray-500">{starbuncle.adopter}</p>
 	</div>
 	<div class="buncle-box bg-surface-100-800-token w-full">
-		<img {src} alt="animated running Starbuncle" class="buncle" class:mirrored={state === "BACKWARDS"} class:rainbow={starbuncle.color === "rainbow"} />
+		<img
+			{src}
+			alt="animated running Starbuncle"
+			class="buncle"
+			class:mirrored={state === 'BACKWARDS'}
+			class:rainbow={starbuncle.color === 'rainbow'}
+		/>
 	</div>
 </div>
 
@@ -149,3 +112,51 @@
 	{starbuncle.bio}
 	<div class="arrow variant-filled-secondary" />
 </div>
+
+<style>
+	.buncle-container {
+		position: relative;
+		overflow: hidden;
+		height: 50px;
+		max-width: 800px;
+		flex-grow: 1;
+	}
+
+	.buncle-box {
+		position: absolute;
+		height: 50px;
+	}
+
+	.buncle {
+		height: 50px;
+		margin-left: -3px;
+	}
+
+	.buncle-name {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.mirrored {
+		transform: scaleX(-1);
+		margin-left: -7px;
+	}
+
+	.rainbow {
+		animation-name: rainbow;
+		animation-duration: 15s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+	}
+
+	@keyframes rainbow {
+		0% {
+			filter: sepia() saturate(2.25) hue-rotate(0deg);
+		}
+		100% {
+			filter: sepia() saturate(2.25) hue-rotate(360deg);
+		}
+	}
+</style>

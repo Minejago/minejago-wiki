@@ -29,7 +29,7 @@
 			id="ars_nouveau_wiki"
 			title="Return to main page">Ars Nouveau Wiki</a
 		>
-		<StarbuncleRun/>
+		<StarbuncleRun />
 	</div>
 	<svelte:fragment slot="trail">
 		<div class="hidden lg:block">

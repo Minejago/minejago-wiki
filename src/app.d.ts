@@ -66,14 +66,14 @@ declare namespace App {
 
 	interface Recipe {
 		type:
-		| 'minecraft:crafting_shaped'
-		| 'minecraft:crafting_shapeless'
-		| 'ars_nouveau:enchanting_apparatus'
-		| 'ars_nouveau:imbuement'
-		| 'ars_nouveau:enchantment'
-		| 'ars_nouveau:glyph'
-		| 'ars_nouveau:armor_upgrade'
-		| 'Unknown Recipe';
+			| 'minecraft:crafting_shaped'
+			| 'minecraft:crafting_shapeless'
+			| 'ars_nouveau:enchanting_apparatus'
+			| 'ars_nouveau:imbuement'
+			| 'ars_nouveau:enchantment'
+			| 'ars_nouveau:glyph'
+			| 'ars_nouveau:armor_upgrade'
+			| 'Unknown Recipe';
 	}
 
 	interface ShapedRecipe extends Recipe {
@@ -145,11 +145,11 @@ declare namespace App {
 		display: {
 			description: {
 				translate: string;
-			},
+			};
 			title: {
 				translate: string;
-			}
-		}
+			};
+		};
 	}
 
 	interface PatchouliStore {

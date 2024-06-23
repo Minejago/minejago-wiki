@@ -1,6 +1,11 @@
 import { loadedAddonStore, selectedAddonStore } from '$lib/stores/addonStore';
 import { get } from 'svelte/store';
-import { advancementStore, patchouliStore, recipesStore, texturesStore } from '$lib/stores/fileStore';
+import {
+	advancementStore,
+	patchouliStore,
+	recipesStore,
+	texturesStore
+} from '$lib/stores/fileStore';
 import { getAddonURL } from '$lib/utils/apiUtils';
 import { modInformations } from '$lib/utils/modInformations';
 import { prepareZip } from '$lib/setup/prepareZip';
@@ -67,7 +72,9 @@ const loadAndStoreAddonData = (addonToBeLoaded: string) => {
 						'',
 						fixApparatusRecipesIfNecessary
 					),
-					addonInformation.advancementPredicate ? getMatchingJSONFiles(addonInformation.advancementPredicate, zip, addonToBeLoaded) : Promise.resolve()
+					addonInformation.advancementPredicate
+						? getMatchingJSONFiles(addonInformation.advancementPredicate, zip, addonToBeLoaded)
+						: Promise.resolve()
 				]).then(
 					([
 						loadedTextures,
@@ -89,7 +96,7 @@ const loadAndStoreAddonData = (addonToBeLoaded: string) => {
 							mergeDeep(get(languagesStore), loadedLanguages) as App.LanguageDictionary
 						);
 						recipesStore.set({ ...get(recipesStore), ...loadedRecipes });
-						advancementStore.set({...get(advancementStore), ...loadedAdvancements})
+						advancementStore.set({ ...get(advancementStore), ...loadedAdvancements });
 						updateSearch();
 						loadedAddonStore.set([...get(loadedAddonStore), addonToBeLoaded]);
 					}

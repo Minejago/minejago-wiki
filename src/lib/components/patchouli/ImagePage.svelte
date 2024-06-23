@@ -1,25 +1,26 @@
 <script lang="ts">
-    import FormattedLabel from "$lib/components/patchouli/FormattedLabel.svelte";
-    import {getTexture} from "$lib/textures";
-    import {getFileName} from "$lib/utils/fileName";
-    import {texturesStore} from "$lib/stores/fileStore";
+	import FormattedLabel from '$lib/components/patchouli/FormattedLabel.svelte';
+	import { getTexture } from '$lib/textures';
+	import { getFileName } from '$lib/utils/fileName';
+	import { texturesStore } from '$lib/stores/fileStore';
 
-    export let text: string;
-    export let title: string;
-    export let images: Array<string>;
+	export let text: string;
+	export let title: string;
+	export let images: Array<string>;
 
-    $: mappedImages = images ? images.map(image => getTexture(`ars_nouveau:${getFileName(image)}`, $texturesStore)) : []
+	$: mappedImages = images
+		? images.map((image) => getTexture(`ars_nouveau:${getFileName(image)}`, $texturesStore))
+		: [];
 </script>
 
 {#if title}
-    <h4 class="mb-3">
-        <FormattedLabel label={title}/>
-    </h4>
+	<h4 class="mb-3">
+		<FormattedLabel label={title} />
+	</h4>
 {/if}
 <p class="text-left max-w-fit textblock">
-    <FormattedLabel label={text}/>
+	<FormattedLabel label={text} />
 </p>
 {#each mappedImages as image, key}
-    <img src={image} alt={images[key]}/>
+	<img src={image} alt={images[key]} />
 {/each}
-

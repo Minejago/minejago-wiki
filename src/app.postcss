@@ -1,7 +1,7 @@
 html,
 body {
 	@apply h-screen overflow-hidden;
-	padding-bottom: env(safe-area-inset-bottom,20px)
+	padding-bottom: env(safe-area-inset-bottom, 20px);
 }
 
 .list-nav a {
@@ -46,11 +46,11 @@ body {
 }
 
 .navSelected {
-    color: rgb(var(--theme-font-color-dark));
-    @apply !bg-primary-500
+	color: rgb(var(--theme-font-color-dark));
+	@apply !bg-primary-500;
 }
 .dark .navSelected {
-    color: rgb(var(--theme-font-color-base));
+	color: rgb(var(--theme-font-color-base));
 }
 
 @media (min-width: 1024px) {
@@ -77,15 +77,15 @@ body {
 	}
 
 	.craftingRecipe {
-	    left: 50%;
-        margin-left: -25vw;
-        margin-right: -50vw;
-        max-width: 50vw;
-        position: relative;
-        right: 50%;
+		left: 50%;
+		margin-left: -25vw;
+		margin-right: -50vw;
+		max-width: 50vw;
+		position: relative;
+		right: 50%;
 	}
 }
 
 .accordion-summary-lead {
-    flex-shrink: 0
+	flex-shrink: 0;
 }
